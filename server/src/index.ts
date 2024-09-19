@@ -9,9 +9,10 @@ const port = process.env.PORT || 3001
 app.use(cors())
 app.use(express.json())
 
-app.get('/test',(req:Request,res:Response)=>{
-    res.json({message:"hello world"});
-})
+
+import userRouter from './routes/user.route'
+
+app.use('/api/user',userRouter)
 
 connectDB()
 .then(()=>{
