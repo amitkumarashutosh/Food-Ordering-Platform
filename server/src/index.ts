@@ -1,6 +1,7 @@
 import express,{Request,Response} from "express"
 import 'dotenv/config'
 import cors from 'cors'
+import connectDB from "./db/index"
  
 const app = express()
 const port = process.env.PORT || 3001
@@ -12,7 +13,14 @@ app.get('/test',(req:Request,res:Response)=>{
     res.json({message:"hello world"});
 })
 
-app.listen(port,()=>{
-    console.log(`App listening at port ${port}`)
+connectDB()
+.then(()=>{
+    app.listen(port,()=>{
+        console.log(`App listening at port ${port}`)
+    })
 })
+.catch(()=>{
+    console.log("Failed to connect to app")
+})
+
 
