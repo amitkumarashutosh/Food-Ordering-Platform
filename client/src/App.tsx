@@ -2,6 +2,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./layouts/Layout";
 import Home from "./pages/Home";
 import AuthCallback from "./pages/AuthCallback";
+import UserProfile from "./pages/UserProfile";
 
 const App = () => {
   return (
@@ -9,8 +10,16 @@ const App = () => {
       <Route
         path="/"
         element={
-          <Layout>
+          <Layout showHero={true}>
             <Home />
+          </Layout>
+        }
+      />
+      <Route
+        path="/user-profile"
+        element={
+          <Layout>
+            <UserProfile />
           </Layout>
         }
       />
