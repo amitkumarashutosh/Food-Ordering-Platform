@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response } from "express";
 import "dotenv/config";
 import cors from "cors";
 import connectDB from "./db/index";
@@ -9,6 +9,10 @@ const port = process.env.PORT || 3001;
 
 app.use(cors());
 app.use(express.json());
+
+app.get("/health", async (req: Request, res: Response) => {
+  res.status(200).json({ message: "health OK!" });
+});
 
 app.use("/api/user", userRouter);
 
