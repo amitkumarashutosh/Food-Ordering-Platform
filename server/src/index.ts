@@ -3,6 +3,7 @@ import "dotenv/config";
 import cors from "cors";
 import connectDB from "./db/index";
 import userRouter from "./routes/user.route";
+import restaurantRoute from "./routes/restaurant.route";
 
 const app = express();
 const port = process.env.PORT || 3001;
@@ -15,6 +16,7 @@ app.get("/health", async (req: Request, res: Response) => {
 });
 
 app.use("/api/user", userRouter);
+app.use("/api/restaurant", restaurantRoute);
 
 connectDB()
   .then(() => {
